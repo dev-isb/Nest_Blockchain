@@ -1,0 +1,21 @@
+services:
+  app:
+    build: .
+    ports:
+      - '3000:3000'
+    depends_on:
+      - db
+    environment:
+      DATABASE_HOST: db
+      DATABASE_USER: root
+      DATABASE_PASSWORD: hadi
+      DATABASE_NAME: price_listing
+      EMAIL: sample@gmail.com
+      MAIL_PASSWORD: sample@123
+
+  db:
+    image: mysql:8.0
+    restart: always
+    environment:
+      MYSQL_ROOT_PASSWORD: hadi
+      MYSQL_DATABASE: price_listing
